@@ -1,0 +1,24 @@
+#leggo la frase da file ed elimino gli spazi
+frase = open('input.txt')
+content = frase.read()
+content = content.replace(' ','') #la funzione replace rimpiazza il carattere fornito come primo parametro con quello fornito come secondo parametro
+frase.close()
+
+#creo il rotore
+rotore = []
+for i in range(0,26):
+  rotore.append(i+65)
+
+from random import sample
+rotore = sample(rotore,26)  #la funzione sample mescola gli elementi dell'array
+
+#converto la stringa
+new_string = ''
+for i in range (0,len(content)):
+  new_string += chr(rotore[(ord(content[i]))-65])
+
+#stampo su file la stringa convertita
+output = open('output.txt','w')
+output.write(new_string)
+output.close()
+
